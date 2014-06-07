@@ -1,14 +1,11 @@
 import operator
 
-def generate(operation, distributions, n):
+def run(operation, distributions, n):
     operations = {"+":add, "*":mul, "/":div, '-':sub}
-    print 'hello'
     generated = [d.run(n) for d in distributions]
-    operations[operation](generated)
+    return operations[operation](generated)
 
 def add(generated):
-    print 'hello there'
-    print reduce(operator.add, generated, 1)
     return reduce(operator.add, generated,1)
 
 def mul(generated):

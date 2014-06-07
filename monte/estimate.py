@@ -1,7 +1,4 @@
-from depentendestimate import DependentEstimate
-
 class Estimate:
-
     def __add__(self,other):
         return self.add(other)
     def __sub__(self,other):
@@ -20,11 +17,7 @@ class Estimate:
     def div(self,*others):
         return self.getDependent('/', others)
 
-    def getDependent(self, operation, *others):
-        if len(others) == 1:
-            return DependentEstimate(operation, self, others)
-        else:
-            return DependentEstimate(operation, *([self] + others))
-
+    def buildDependent(self, operation, *others):
+        pass
 
 

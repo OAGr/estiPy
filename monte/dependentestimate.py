@@ -13,15 +13,19 @@ class DependentEstimate(Estimate):
         else:
             return mcgen.run(self.operation, self.estimates,n)
 
-    def update_distribution(self):
-        distribution = AnalyticSolver.find_distribution(self.operation, self.estimates)
-        self.distribution = distribution
-        return distribution
-
     @property
     def distribution(self):
-        self.update_distribution()
+        distribution = AnalyticSolver.find_distribution(self.operation, self.estimates)
+        self.distribution = distribution
         return self.distribution
+
+    def buildDependent(self, operation, *others):
+        if len(others) == 1:
+            return DependentEstimate(operation, self, others)
+        else:
+            return DependentEstimate(operation, *([self] + others))
+
+
 
 
 

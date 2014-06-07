@@ -5,12 +5,6 @@ from random import *
 from operator import *
 from numpy import *
 import pdb
-"""
-Created on Wed May 14 22:12:17 2014
-
-@author: ozziegooen
-"""
-
 class Distribution:
     def __init__(self, mean, stdev, dist = gauss):
         self.mean = mean

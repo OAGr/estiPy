@@ -1,8 +1,8 @@
 import operator
 
-def run(operation, distributions, n):
+def run(operation, estimates, n):
     operations = {"+":add, "*":mul, "/":div, '-':sub}
-    generated = [d.run(n) for d in distributions]
+    generated = [d.run(n) for d in estimates]
     return operations[operation](generated)
 
 def add(generated):

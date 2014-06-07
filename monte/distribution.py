@@ -1,6 +1,6 @@
 import numpy, random
 
-class Distribution:
+class Distribution(object):
     def __init__(self, mean, stdev, dist = random.gauss):
         self.mean = mean
         self.stdev = stdev

@@ -2,6 +2,7 @@ from monte.distribution import Distribution
 from monte.estimate import Estimate
 import mcsolver
 import numpy, random
+import pdb
 
 class DependentEstimate(Estimate):
     def __init__(self,operation, *inputs):

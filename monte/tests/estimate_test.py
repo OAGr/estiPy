@@ -2,7 +2,7 @@ from monte.estimate import *
 from monte.dependent.dependent import *
 import unittest
 
-class TestTest(unittest.TestCase):
+class EstimateTest(unittest.TestCase):
     def setUp(self):
         self.a = Estimate()
         self.b = Estimate()

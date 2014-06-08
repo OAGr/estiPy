@@ -1,4 +1,4 @@
-from monte.distribution import *
+from estipy.distribution import *
 import unittest
 
 def test_Distribution():

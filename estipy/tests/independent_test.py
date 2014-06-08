@@ -1,4 +1,4 @@
-from monte.independent import IndependentEstimate
+from estipy.independent import IndependentEstimate
 import pdb
 import unittest
 import random

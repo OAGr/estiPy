@@ -1,5 +1,5 @@
-from monte.estimate import *
-from monte.dependent.dependent import *
+from estipy.estimate import *
+from estipy.dependent.dependent import *
 import unittest
 
 class EstimateTest(unittest.TestCase):

@@ -12,16 +12,7 @@ class DependentEstimate(Estimate):
         return all([i.is_valid() for i in inputs])
 
     def run(self,n):
-#        if self.distribution:
-            #return self.distribution.run(n)
-        #else:
         return mcsolver.run(self.operation, self.inputs,n)
-
-#    @property
-    #def distribution(self):
-        #distribution = analyticsolver.Solution.find(self.operation, self.inputs)
-        #self.distribution = distribution
-        #return self.distribution
 
     def buildDependent(self, operation, *others):
         if len(others) == 1:

@@ -1,4 +1,9 @@
 from ..estimate import Estimate
+import unittest
+
+class TestTest(unittest.TestCase):
+    def test_thing1(self):
+        self.assertEqual(5,5)
 
 def test_b():
     a = Estimate()

@@ -1,6 +1,6 @@
 from distutils.core import setup
 setup(
-    name='Monte',
+    name='MonteLib',
     version='0.1dev',
     author='Ozzie Gooen',
     packages=['monte'],

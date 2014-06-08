@@ -9,15 +9,19 @@ class Estimate:
         return self.div(other)
 
     def add(self,*others):
-        return self.getDependent('+', others)
+        return self.buildDependent('+', others)
     def sub(self,*others):
-        return self.getDependent('-', others)
+        return self.buildDependent('-', others)
     def mul(self,*others):
-        return self.getDependent('*', others)
+        return self.buildDependent('*', others)
     def div(self,*others):
-        return self.getDependent('/', others)
+        return self.buildDependent('/', others)
 
     def buildDependent(self, operation, *others):
-        pass
+        class DependentMock:
+            def __init__(self,operation, others):
+                self.operation = operation
+                self.others = others
+        return DependentMock(operation, *others)
 
 

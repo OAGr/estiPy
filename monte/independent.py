@@ -1,11 +1,9 @@
 from estimate import Estimate
 from distribution import Distribution
 from dependentestimate import DependentEstimate
-import pdb
 
 class IndependentEstimate(Estimate):
     def __init__(self,*params):
-        pdb.set_trace()
         self.distribution = Distribution(*params)
 
     def run(self,n):

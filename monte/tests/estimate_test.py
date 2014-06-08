@@ -1,19 +1,29 @@
-from ..estimate import Estimate
+from monte.estimate import *
+from monte.dependent.dependent import *
 import unittest
 
 class TestTest(unittest.TestCase):
-    def test_thing1(self):
-        self.assertEqual(5,5)
+    def setUp(self):
+        self.a = Estimate()
+        self.b = Estimate()
+        self.c = Estimate()
 
-def test_b():
-    a = Estimate()
-    assert a.__class__ == Estimate
+    def test_reg_add(self):
+        dd = self.a + self.b
+        self.assertEqual(dd.operation, '+')
+        self.assertEqual(dd.others, (self.b,))
 
-class IndependentTests:
-    def test_create(self):
-        a = Estimate()
-        assert a.__class__ == Estimate
-        assert a.__class__ == Estimate
+    def test_reg_mul(self):
+        dd = self.a * self.b
+        self.assertEqual(dd.operation, '*')
+        self.assertEqual(dd.others, (self.b,))
 
-#if __name__ == "__main__":
-#    print 'hi'
+    def test_alt_add(self):
+        dd = self.a.add(self.b,self.c)
+        self.assertEqual(dd.operation, '+')
+        self.assertEqual(dd.others, (self.b,self.c))
+
+    def test_alt_mult(self):
+        dd = self.a.mul(self.b,self.c)
+        self.assertEqual(dd.operation, '*')
+        self.assertEqual(dd.others, (self.b,self.c))

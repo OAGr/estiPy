@@ -1,5 +1,5 @@
-from distribution import Distribution
-from estimate import Estimate
+from monte.distribution import Distribution
+from monte.estimate import Estimate
 import mcsolver
 import numpy, random
 

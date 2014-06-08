@@ -1,5 +1,5 @@
-from monte.distribution import Distribution
-from monte.estimate import Estimate
+from estipy.distribution import Distribution
+from estipy.estimate import Estimate
 import mcsolver
 import numpy, random
 import pdb

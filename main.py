@@ -1,8 +1,8 @@
-from monte.estimate import *
-from monte.distribution import *
-from monte.independent import *
+from estipy.estimate import *
+from estipy.distribution import *
+from estipy.independent import *
 
-print 'hello there'
+print 'test'
 
 print Estimate()
 print Distribution(5,2)

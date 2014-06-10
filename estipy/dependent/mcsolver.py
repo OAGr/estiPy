@@ -32,3 +32,8 @@ def _div(generated):
 def _sub(generated):
     return reduce(operator.sub, generated[1:], generated[0])
 
+def _greater_than(generated):
+    return reduce(operator.gt, generated[1:], generated[0])
+
+def _less_than(generated):
+    return reduce(operator.lt, generated[1:], generated[0])

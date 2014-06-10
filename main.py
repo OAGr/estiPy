@@ -18,4 +18,5 @@ ddd = IndependentEstimate(1,1)
 
 eee = ccc + ddd
 fff = ccc + 5
+print fff
 pdb.set_trace()

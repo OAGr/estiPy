@@ -34,29 +34,32 @@ class DependentEstimate(Estimate):
         else:
             return DependentEstimate(operation, *([self] + others))
 
-class InputWrapper:
-    def __init__(self, inp):
-        self.inp = inp
+class InputWrapper(object):
+    def __init__(self, baseObject):
+        self.baseObject = baseObject
+       
+    def __str__(self):
+        return self.baseObject.__str__()
 
     def run(self, n):
-        if self.is_estimate() or self.has_distribution():
-            return self.inp.run(n)
+        if hasattr(self.baseObject, 'run'):
+            return self.baseObject.run(n)
         elif self.is_num():
-            return numpy.array([self.inp] * n)
+            return numpy.array([self.baseObject] * n)
         else:
             return numpy.array([None] * n)
 
     def is_none(self):
-        return self.inp == None
+        return self.baseObject == None
     def is_num(self):
-        return any([isinstance(self.inp, obj) for obj in [int,float,long]])
+        return any([isinstance(self.baseObject, obj) for obj in [int,float,long]])
     def is_estimate(self):
-        return isinstance(self.inp,
-                estipy.independent.IndependentEstimate) or isinstance(self.inp, DependentEstimate)
+        return isinstance(self.baseObject,
+                estipy.independent.IndependentEstimate) or isinstance(self.baseObject, DependentEstimate)
     def has_distribution(self):
-        return self.is_estimate() and hasattr(self.inp, 'distribution')
+        return self.is_estimate() and hasattr(self.baseObject, 'distribution')
     def is_gaussian(self):
-        return self.has_distribution() and self.inp.distribution.dist == random.gauss
+        return self.has_distribution() and self.baseObject.distribution.dist == random.gauss
 
     def is_valid(self):
         if self.is_none():

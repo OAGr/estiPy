@@ -1,6 +1,6 @@
 from estimate import Estimate
 from distribution import Distribution
-from dependent.dependent import DependentEstimate
+import dependent.dependent
 
 import pdb
 class IndependentEstimate(Estimate):
@@ -12,8 +12,8 @@ class IndependentEstimate(Estimate):
 
     def buildDependent(self, operation, others):
         if len(others) == 1:
-            return DependentEstimate(operation, self, *others)
+            return dependent.dependent.DependentEstimate(operation, self, *others)
         else:
-            return DependentEstimate(operation, *([self] + others))
+            return dependent.dependent.DependentEstimate(operation, *([self] + others))
 
 

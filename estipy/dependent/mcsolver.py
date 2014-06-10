@@ -14,14 +14,14 @@ IndependentEstimate(10,3))
 Example Output:
 [360,301,297,271,389]
 '''
-
-def run(operation, n, *estimates):
+import pdb
+def run(operation, n, estimates):
     operations = {"+":_add, "*":_mul, "/":_div, '-':_sub}
     generated = [d.run(n) for d in estimates]
     return operations[operation](generated)
 
 def _add(generated):
-    return reduce(operator.add, generated,1)
+    return reduce(operator.add, generated,0)
 
 def _mul(generated):
     return reduce(operator.mul,generated, 1)

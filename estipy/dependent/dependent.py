@@ -16,23 +16,16 @@ class DependentEstimate(Estimate):
     def run(self,n=1000):
         return mcsolver.run(self.operation, n, self.inputs)
 
-    def avg(self,n):
-        return sum(self.run(n)) / n
-
-    def std(self,n=1000):
-        return numpy.std(self.run(n))
-
-    def mean(self,n=1000):
-        return numpy.mean(self.run(n))
-
-    def var(self,n=1000):
-        return numpy.var(self.run(n))
-
     def buildDependent(self, operation, *others):
         if len(others) == 1:
             return DependentEstimate(operation, self, others)
         else:
             return DependentEstimate(operation, *([self] + others))
+
+for stat in {'std','mean','var'}:
+    def _find_stat(self, n=1000, stat=stat):
+        return getattr(numpy, stat)(self.run(n))
+    setattr(DependentEstimate, stat, _find_stat)
 
 class InputWrapper(object):
     def __init__(self, baseObject):

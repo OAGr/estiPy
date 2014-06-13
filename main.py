@@ -13,10 +13,27 @@ def testing():
 I = IndependentEstimate
 aaa = Estimate()
 bbb =  Distribution(5,2)
-ccc = IndependentEstimate(5,2)
-ddd = IndependentEstimate(1,1)
 
-eee = ccc + ddd
-fff = ccc + 5
-print fff
-pdb.set_trace()
+dogs = IndependentEstimate(5,2)
+#dogs.mean = 5, dogs.std = 2
+
+cats = IndependentEstimate(1,1)
+#cats.mean = 1, cats.std = 1
+
+animals = dogs + cats
+#animals.mean ~= 6
+#animals.std ~= 3
+#animals.run(3) = [4,6,5]
+
+cats.mean = 10
+#animals.mean ~= 11
+
+insects = IndependentEstimate(100,3)
+
+living_beings = animals + insects
+#living_beings.mean = 100
+
+
+
+wolves = dogs + 3
+

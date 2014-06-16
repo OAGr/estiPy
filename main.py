@@ -32,8 +32,8 @@ insects = IndependentEstimate(100,3)
 
 living_beings = animals + insects
 #living_beings.mean = 100
-
-
-
+pdb.set_trace()
+print animals
+pdb.set_trace()
 wolves = dogs + 3
 

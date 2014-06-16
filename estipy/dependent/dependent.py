@@ -10,19 +10,26 @@ class DependentEstimate(Estimate):
         self.operation = operation
         self.inputs = [InputWrapper(i) for i in inputs]
 
+    def __repr__(self):
+        return '(' +  self.operation + ') => [' + ', '.join([str(e) for e in self.inputs]) + ']'
+
+    def __str__(self):
+        return '(' +  self.operation + ') => [' + ', '.join([str(e) for e in self.inputs]) + ']'
+
     def valid_inputs(self):
         return all([i.is_valid() for i in self.inputs]) and len(self.inputs)
 
     def run(self,n=1000):
         return mcsolver.run(self.operation, n, self.inputs)
 
-    def buildDependent(self, operation, *others):
+    def buildDependent(self, operation, others):
         if len(others) == 1:
-            return DependentEstimate(operation, self, others)
+            return DependentEstimate(operation, self, *others)
         else:
             return DependentEstimate(operation, *([self] + others))
 
-for stat in {'std','mean','var'}:
+
+for stat in {'std','mean','median','average','var'}:
     def _find_stat(self, n=1000, stat=stat):
         return getattr(numpy, stat)(self.run(n))
     setattr(DependentEstimate, stat, _find_stat)

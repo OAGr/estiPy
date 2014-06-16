@@ -1,3 +1,5 @@
+import numpy
+
 class Estimate:
     def __add__(self,other):
         return self.add(other)
@@ -23,5 +25,16 @@ class Estimate:
                 self.operation = operation
                 self.others = others
         return DependentMock(operation, *others)
+
+    def stats(self, n=1000):
+        mean = self.mean(n)
+        std = self.std(n)
+        median = self.median(n)
+        return "mean:" + str(mean) + ",std:"+ str(std) + ",med: " +str(median)
+
+for stat in {'std','mean','median','average','var'}:
+    def _find_stat(self, n=1000, stat=stat):
+        return getattr(numpy, stat)(self.run(n))
+    setattr(Estimate, stat, _find_stat)
 
 
